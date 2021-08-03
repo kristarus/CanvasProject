@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
+  height: 100vh;
+`;
+
+export const Table = styled.div`
   width: fit-content;
-  margin: 20px auto;
+  padding: 50px 0;
+  margin: 0 auto;
   display: flex;
 `;
 

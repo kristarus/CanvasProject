@@ -1,5 +1,5 @@
 import { Root } from "./CanvasStyles";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ICanvasProps, IFiguresProps } from "./types";
 import { SIZES } from "constants/sizes";
 
@@ -68,6 +68,7 @@ function Canvas({ figure, mouseUp }: ICanvasProps) {
     h: number,
     selected: boolean = false
   ) => {
+    setLocalStorageFigures(figures);
     ctx.lineWidth = 3;
     if (selected) {
       ctx.strokeStyle = "red";
@@ -84,6 +85,7 @@ function Canvas({ figure, mouseUp }: ICanvasProps) {
     d: number,
     selected: boolean = false
   ) => {
+    setLocalStorageFigures(figures);
     ctx.beginPath();
     ctx.arc(x + d / 2, y + d / 2, d / 2, 0, 2 * Math.PI);
     ctx.fillStyle = "lightblue";
@@ -205,7 +207,23 @@ function Canvas({ figure, mouseUp }: ICanvasProps) {
     }
   };
 
+  const getLocalStorageFigures = () => {
+    let JSONFigures: string | null;
+    JSONFigures = localStorage.getItem("figures");
+    const figures = JSON.parse(JSONFigures || "[]");
+    return figures;
+  };
+
+  const setLocalStorageFigures = (figures: object[]) => {
+    localStorage.setItem("figures", JSON.stringify(figures));
+  };
+
+  drawFigures();
   deleteFigure();
+
+  useEffect(() => {
+    setFigures(getLocalStorageFigures());
+  }, []);
 
   return (
     <Root

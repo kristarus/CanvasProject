@@ -1,3 +1,13 @@
+# Canvas Project
+## Description
+There are two sections: section of figures (square, circle) and section of canvas. The application carries out the placement of figures on the canvas using Drag-and-drop functionality. The application is written in React and Typescript using such libraries as React and Styled-components.
+## Implemented functionality
+- The user can drag and drop figures from the first section to the canvas unlimited;
+- The user can select a figure on the canvas by clicking the left mouse button. When a figure is selected it has a red border. If the selected figure overlaps with other figures it is placed on the top layer;
+- The application prevents the figure from going outside the canvas if the mouse cursor is within the canvas. If the mouse cursor leaves the canvas the selected figure is deleted.
+- The user can delete a figure by dragging the selected figure outside the canvas or by pressing the "Delete" button on the keyboard;
+- The application restores the position of the figures on the canvas after reloading the page.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
